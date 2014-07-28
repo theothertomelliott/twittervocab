@@ -2,8 +2,13 @@
 
 <div id="progress" ng-show="working" >
 <h3>Processing {{ handle }}'s tweets...</h3>
-{{ processedTweets }} of {{ maxProcessedTweets }} tweets ({{ totalTweets }} total)	<sup><a href="#" data-toggle="modal"
-   data-target="#infoApiLimit">(?)</a></sup>
+
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="{{ (processedTweets/maxProcessedTweets)*100 }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ (processedTweets/maxProcessedTweets)*100 }}%;">
+		{{ (processedTweets/maxProcessedTweets)*100 | number:0 }}%
+  </div>
+</div>
+{{ processedTweets }} of {{ maxProcessedTweets }} tweets ({{ totalTweets }} total)	<sup><a href="#" data-toggle="modal" data-target="#infoApiLimit">(?)</a></sup>
 </div>
 
 <div id="vocab" ng-hide="working" >
