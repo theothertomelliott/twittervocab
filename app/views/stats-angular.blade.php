@@ -8,6 +8,9 @@
 
 @section('script')
 
+<!-- Twitter Widgets -->
+<script src="http://platform.twitter.com/widgets.js"></script>
+
 <!-- Angular JS -->   
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.14/angular.min.js"></script>
 
@@ -67,6 +70,20 @@ App.controller('VocabStatsController', function($scope, $http) {
 			for(var i = 0; i < wordsSorted.length; i++){
 	            $scope.wordsByLength[i] = wordsSorted[i].word;
 			}
+
+			var l = window.location.href;
+			
+			// Display the Twitter share button
+			twttr.widgets.load();
+			twttr.widgets.createShareButton(
+					l.replace("/" + $scope.handle, ""),
+                    angular.element(document.getElementById('tweetShare'))[0],
+                    function(el) {}, {
+                        count: 'none',
+                        text: $scope.handle + "'s most tweeted word was \"" + $scope.topWords[0] + "\", what's yours?",
+                        size: 'large'
+                    }
+                );
 
 			$scope.working = false;
         }

@@ -10,7 +10,7 @@
 
 <h1>{{ handle }}'s Twitter Vocab</h1>
 
-<p>{{ handle }} used {{ count(array_keys($wordList)) }} words in their last {{ processedTweets }}
+<p>{{ handle }} used {{ wordsByLength.length }} words in their last {{ processedTweets }}
 	<sup><a href="#" data-toggle="modal"
    data-target="#infoApiLimit">(?)</a></sup>
     tweets.</p>
@@ -30,12 +30,14 @@
 	<li>{{ wordsByLength[2] }} ({{ wordsByLength[2].length }} letters)</li>
 </ol>
 
-<hr/>
+<br/>
 
 <h2>Share your Results</h2>
 
-<a href="https://twitter.com/share" class="twitter-share-button" data-text="{{ handle }}'s most tweeted word was &quot;{{ topWords[0] }}&quot;, what's yours?" data-size="large">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<a id="tweetShare"></a>
+
+<br/>
+<br/>
 
 <h3><a href="/">&lt;&lt; Start Again</a></h3>
 
