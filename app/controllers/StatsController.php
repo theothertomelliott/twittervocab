@@ -8,6 +8,9 @@ class StatsController extends BaseController {
 	}
 	
 	public function getWordCount($handle){
+		
+		try {
+		
 		$wordArr = array();
 
 		$maxId = -1;
@@ -30,6 +33,16 @@ class StatsController extends BaseController {
 		arsort($wordList);
 				
 		return array('tweetsProcessed' => $count, 'lastId' => $lastId, 'wordlist' => $wordList);
+		
+		} catch (TwitterUserNotFoundException $e){
+			return array("error" => "TwitterUserNotFound");
+		} catch (TwitterUnexpectedException $e){
+			return array("error" => "TwitterUserNotFound");
+		} catch (TwitterRateLimitException $e){
+			return array("error" => "TwitterRateLimitException");
+		} catch (Exception $e){
+			return array("error" => "Exception");
+		}
 	}
 	
 	public function getCurrentUser(){

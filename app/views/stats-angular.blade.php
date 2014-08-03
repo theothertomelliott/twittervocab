@@ -29,9 +29,20 @@ App.controller('VocabStatsController', function($scope, $http) {
 	}
 	$scope.wordcount = {};
 	$scope.working = true;
-
+	$scope.hasError = false;
+	$scope.complete = false;
+	
 	$scope.processWordCount = function(res){
 		var wc = res.data;
+
+		if(wc.error != null){
+			$scope.hasError = true;
+			$scope.working = false;
+			$scope.complete = false;
+			$scope.errorMessage = wc.error;
+			return;
+		}
+		
         $scope.text = "";
         
 		$scope.processedTweets += wc.tweetsProcessed;
@@ -86,6 +97,7 @@ App.controller('VocabStatsController', function($scope, $http) {
                 );
 
 			$scope.working = false;
+			$scope.complete = true;
         }
 	}
 

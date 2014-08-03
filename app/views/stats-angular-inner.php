@@ -11,7 +11,18 @@
 {{ processedTweets }} of {{ maxProcessedTweets }} tweets ({{ totalTweets }} total)	<sup><a href="#" data-toggle="modal" data-target="#infoApiLimit">(?)</a></sup>
 </div>
 
-<div id="vocab" ng-hide="working" >
+<div id="vocab" ng-show="hasError">
+	<h1><i class="fa fa-lg fa-warning"></i>&nbsp;Error</h1>
+	<p>Your request failed with the following error: {{ errorMessage }}. Please try again later:</p>
+	<form method="post" action="/handle">
+		<p>
+			<input type="text" name="handle" value="{{ handle }}"/>
+			<input type="submit" value="Go" class="btn btn-primary btn-lg" role="button"/>
+		</p>
+	</form>
+</div>
+
+<div id="vocab" ng-show="complete" >
 
 <h1><i class="fa fa-lg fa-twitter"></i>&nbsp;<a href="http://www.twitter.com/{{ handle}}">{{ handle }}</a>'s Twitter Vocab</h1>
 

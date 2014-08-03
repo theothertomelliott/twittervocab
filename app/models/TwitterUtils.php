@@ -2,6 +2,7 @@
 
 class TwitterUserNotFoundException extends Exception {}
 class TwitterUnexpectedException extends Exception {}
+class TwitterRateLimitException extends Exception {}
 
 class TwitterUtils {
 	
@@ -70,8 +71,10 @@ class TwitterUtils {
 		if(isset($output['errors'])){
 			if($output['errors'][0]['code'] == 34){
 				throw new TwitterUserNotFoundException();
+			} else if($output['errors'][0]['code'] == 88) {
+				throw new TwitterRateLimitException();
 			} else {
-				throw new TwitterUnexpectedException();
+				throw new Exception($result);
 			}
 		}
 		
