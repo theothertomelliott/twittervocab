@@ -20,6 +20,8 @@
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
         @yield('body')
+        
+        <div class="text-right">Created by <a href="http://www.theothertomelliott.com">Tom Elliott</a>, 2014.
         </div>
 
     <!-- Bootstrap core JavaScript
