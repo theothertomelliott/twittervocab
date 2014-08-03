@@ -13,7 +13,7 @@
 
 <div id="vocab" ng-hide="working" >
 
-<h1>{{ handle }}'s Twitter Vocab</h1>
+<h1><i class="fa fa-lg fa-twitter"></i>&nbsp;<a href="http://www.twitter.com/{{ handle}}">{{ handle }}</a>'s Twitter Vocab</h1>
 
 <p>{{ handle }} used {{ wordsByLength.length }} words in their last {{ processedTweets }}
 	<sup><a href="#" data-toggle="modal"
