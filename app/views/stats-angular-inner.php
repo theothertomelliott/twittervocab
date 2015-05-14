@@ -1,4 +1,4 @@
-<div id="stats-app" ng-app="VocabStatsApp" ng-controller="VocabStatsController">
+<div id="stats-app" ng-app="VocabStatsApp" ng-controller="VocabStatsController" ng-cloak>
 
 <div id="progress" ng-show="working" >
 <h3>Processing {{ handle }}'s tweets...</h3>
